@@ -8,7 +8,8 @@ class MissPlete {
     input,
     options,
     scoreFn = memoize(MissPlete.scoreFn),
-    listItemFn = MissPlete.listItemFn
+    listItemFn = MissPlete.listItemFn,
+    selectFn = MissPlete.selectFn
   }) {
     Object.assign(this, { input, options, scoreFn, listItemFn });
 
@@ -32,7 +33,7 @@ class MissPlete {
       if (this.ul) {  // dropdown visible?
         switch (event.keyCode) {
           case 13:
-            this.select();
+            this.selectFn();
             break;
           case 27:  // Esc
             this.removeDropdown();
@@ -133,7 +134,7 @@ class MissPlete {
 
       newUl.addEventListener('click', event => {
         if (event.target.tagName === 'LI') {
-          this.select();
+          this.selectFn();
         }
       });
 
@@ -168,7 +169,7 @@ class MissPlete {
     }
   }
 
-  select() {
+  selectFn() {
     if (this.highlightedIndex !== -1) {
       this.input.value = this.scoredOptions[this.highlightedIndex].displayValue;
       this.removeDropdown();
