@@ -5,7 +5,7 @@ module.exports = {
   output: {
     path: __dirname,
     filename: 'dist/bundle.js',
-    libraryTarget: 'umd',
+    libraryTarget: 'var',
     library: "MissPlete"
   },
   module: {
@@ -14,12 +14,8 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel',
         query: { presets: ['es2015'] }
-      },
-      {
-        test: /\.css$/,
-        loader: "style-loader!css-loader"
       }
     ]
-  },
-  devtool: 'source-map'
+  }
+  // devtool: 'source-map'
 };

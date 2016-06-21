@@ -1,6 +1,5 @@
 import jaroWinkler from './jaroWinkler.js';
 import memoize from './memoize.js';
-import './miss-plete.css';
 
 class MissPlete {
 
