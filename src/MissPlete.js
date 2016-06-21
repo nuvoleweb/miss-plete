@@ -11,7 +11,7 @@ class MissPlete {
     listItemFn = MissPlete.listItemFn,
     selectFn = MissPlete.selectFn
   }) {
-    Object.assign(this, { input, options, scoreFn, listItemFn });
+    Object.assign(this, { input, options, scoreFn, listItemFn, selectFn });
 
     this.scoredOptions = null;
     this.container = null;
@@ -33,7 +33,7 @@ class MissPlete {
       if (this.ul) {  // dropdown visible?
         switch (event.keyCode) {
           case 13:
-            this.selectFn();
+            this.selectFn(this.scoredOptions[this.highlightedIndex]);
             break;
           case 27:  // Esc
             this.removeDropdown();
@@ -96,6 +96,13 @@ class MissPlete {
     return li;
   }
 
+  static selectFn(option) {
+    if (option) {
+      this.input.value = option.displayValue;
+      this.removeDropdown();
+    }
+  }
+
   getSiblingIndex(node) {
     let index = -1;
     let n = node;
@@ -134,7 +141,7 @@ class MissPlete {
 
       newUl.addEventListener('click', event => {
         if (event.target.tagName === 'LI') {
-          this.selectFn();
+          this.selectFn(this.scoredOptions[this.highlightedIndex]);
         }
       });
 
@@ -166,13 +173,6 @@ class MissPlete {
       if (this.highlightedIndex !== -1) {
         this.ul.children[this.highlightedIndex].classList.add("highlight");
       }
-    }
-  }
-
-  selectFn() {
-    if (this.highlightedIndex !== -1) {
-      this.input.value = this.scoredOptions[this.highlightedIndex].displayValue;
-      this.removeDropdown();
     }
   }
 
