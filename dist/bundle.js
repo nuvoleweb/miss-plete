@@ -111,7 +111,9 @@ var MissPlete =
 	      if (_this.ul) {
 	        // dropdown visible?
 	        switch (event.keyCode) {
+	          case 9:
 	          case 13:
+	            event.preventDefault();
 	            _this.selectFn(_this.scoredOptions[_this.highlightedIndex]);
 	            break;
 	          case 27:
@@ -200,6 +202,8 @@ var MissPlete =
 	        this.input.parentNode.insertBefore(newContainer, this.input.nextSibling);
 	        this.container = newContainer;
 	        this.ul = newUl;
+
+	        this.changeHighlightedOption(0);
 	      }
 	    }
 	  }, {
