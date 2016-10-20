@@ -31,7 +31,9 @@ class MissPlete {
     this.input.addEventListener('keydown', event => {
       if (this.ul) {  // dropdown visible?
         switch (event.keyCode) {
+          case 9:
           case 13:
+            event.preventDefault();
             this.selectFn(this.scoredOptions[this.highlightedIndex]);
             break;
           case 27:  // Esc
@@ -155,6 +157,8 @@ class MissPlete {
       this.input.parentNode.insertBefore(newContainer, this.input.nextSibling);
       this.container = newContainer;
       this.ul = newUl;
+
+      this.changeHighlightedOption(0);
     }
   }
 
