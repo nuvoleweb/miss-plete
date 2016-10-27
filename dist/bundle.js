@@ -58,6 +58,8 @@ var MissPlete =
 	  value: true
 	});
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _jaroWinkler = __webpack_require__(2);
@@ -76,18 +78,18 @@ var MissPlete =
 	  function MissPlete(_ref) {
 	    var _this = this;
 
-	    var input = _ref.input;
-	    var options = _ref.options;
-	    var _ref$scoreFn = _ref.scoreFn;
-	    var scoreFn = _ref$scoreFn === undefined ? (0, _memoize2.default)(MissPlete.scoreFn) : _ref$scoreFn;
-	    var _ref$listItemFn = _ref.listItemFn;
-	    var listItemFn = _ref$listItemFn === undefined ? MissPlete.listItemFn : _ref$listItemFn;
-	    var _ref$selectFn = _ref.selectFn;
-	    var selectFn = _ref$selectFn === undefined ? MissPlete.selectFn : _ref$selectFn;
+	    var input = _ref.input,
+	        options = _ref.options,
+	        _ref$scoreFn = _ref.scoreFn,
+	        scoreFn = _ref$scoreFn === undefined ? (0, _memoize2.default)(MissPlete.scoreFn) : _ref$scoreFn,
+	        _ref$listItemFn = _ref.listItemFn,
+	        listItemFn = _ref$listItemFn === undefined ? MissPlete.listItemFn : _ref$listItemFn,
+	        _ref$selectFn = _ref.selectFn,
+	        selectFn = _ref$selectFn === undefined ? MissPlete.selectFn : _ref$selectFn;
 
 	    _classCallCheck(this, MissPlete);
 
-	    Object.assign(this, { input: input, options: options, scoreFn: scoreFn, listItemFn: listItemFn, selectFn: selectFn });
+	    _extends(this, { input: input, options: options, scoreFn: scoreFn, listItemFn: listItemFn, selectFn: selectFn });
 
 	    this.scoredOptions = null;
 	    this.container = null;
