@@ -1,7 +1,10 @@
 var webpack = require("webpack");
 
 module.exports = {
-  entry: ['./src/MissPlete.js'],
+  entry: [
+    'babel-polyfill',
+    './src/MissPlete.js'
+  ],
   output: {
     path: __dirname,
     filename: 'dist/bundle.js',
@@ -15,7 +18,9 @@ module.exports = {
         loader: 'babel',
         query: {
           presets: ['es2015'],
-          plugins: ['transform-object-assign']
+          plugins: [
+            'transform-object-assign'
+          ]
         }
       }
     ]
