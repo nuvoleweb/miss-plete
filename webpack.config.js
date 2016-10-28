@@ -2,7 +2,7 @@ var webpack = require("webpack");
 
 module.exports = {
   entry: [
-    'babel-polyfill',
+    'core-js/modules/es6.symbol',
     './src/MissPlete.js'
   ],
   output: {
@@ -17,7 +17,7 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel',
         query: {
-          presets: ['es2015'],
+          presets: ['es2015-minimal'],
           plugins: [
             'transform-object-assign'
           ]
